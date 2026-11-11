@@ -1,0 +1,41 @@
+# AgentCorp internal-only architecture blueprint.
+# NOT an importable Paperclip team file. Translate to upstream catalog format after schema review.
+organization:
+  internal_only: true
+  default_locale: pt-BR
+  supported_locales: [pt-BR, en]
+  purpose_pt: "Equipe de agentes para projetos e operações de qualquer setor."
+  purpose_en: "Agent team for projects and operations in any industry."
+  departments:
+    - id: executive
+      head_role: virtual_ceo
+      roles: [strategy_director, program_manager]
+    - id: research
+      head_role: research_director
+      roles: [market_analyst, business_analyst]
+    - id: product_engineering
+      head_role: technology_director
+      roles: [product_manager, designer, engineer, qa_engineer, devops]
+    - id: audit
+      head_role: audit_director
+      independent_of: product_engineering
+      roles: [security_reviewer, compliance_reviewer]
+    - id: marketing
+      head_role: marketing_director
+      roles: [content_strategist, campaign_analyst]
+    - id: sales
+      head_role: sales_director
+      roles: [crm_analyst, proposal_specialist]
+    - id: administration
+      head_role: operations_director
+      roles: [finance_analyst, operations_analyst]
+  workflow:
+    idea_to_launch:
+      stages: [intake, research, feasibility, owner_approval, specification, execution, independent_audit, release_approval, launch, measure]
+      default_publication: draft_only
+  permissions:
+    production_deploy: owner_approval
+    external_messages: owner_approval
+    financial_transactions: owner_approval
+    legal_commitments: owner_approval
+    destructive_changes: owner_approval
